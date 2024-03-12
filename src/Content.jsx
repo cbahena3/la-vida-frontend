@@ -49,6 +49,13 @@ export function Content(){
     });
   };
 
+  const deleteRecipe = (recipe) => {
+    axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then((response) => {
+      setRecipes(recipes.filter((p)=> p.id !== recipe.id));
+      closeRecipe();
+    })
+  }
+
   useEffect(recipesIndex, []);
 
   return(
@@ -56,7 +63,7 @@ export function Content(){
       <h1>The Content: </h1>
       <RecipesIndex recipes = {recipes} displayRecipe = {displayRecipe}/>
       <Modal show = {showRecipe} onCloseRecipe = {closeRecipe}>
-        <RecipesShow recipe = {currentRecipe} updateRecipe = {updateRecipe}/>
+        <RecipesShow recipe = {currentRecipe} updateRecipe = {updateRecipe} deleteRecipe = {deleteRecipe}/>
       </Modal>
       <RecipesNew onCreateRecipe = {recipesCreate} />
     </div>

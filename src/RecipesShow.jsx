@@ -6,6 +6,9 @@ export function RecipesShow(props){
     props.updateRecipe(props.recipe.id, params, () => event.target.reset());
   }
 
+  const handleClick = () => {
+    props.deleteRecipe(props.recipe);
+  }
 
   return(
     <div>
@@ -50,6 +53,7 @@ export function RecipesShow(props){
         <button type="submit" >Update Recipe</button>
         {/* update saves but if left blank it saves it as blank too instead of leaving previous data */}
       </form>
+      <button onClick={handleClick}> Delete Recipe </button>
     </div>
   )
 }

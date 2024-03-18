@@ -4,6 +4,9 @@ import { RecipesIndex } from "./RecipesIndex";
 import {RecipesNew} from "./RecipesNew";
 import { Modal } from "./Modal";
 import { RecipesShow } from "./RecipesShow";
+import { SignUp } from "./SignUp";
+import { Login } from "./Login";
+import { Logout } from "./Logout";
 
 export function Content(){
   const [recipes, setRecipes] = useState([]);
@@ -61,6 +64,9 @@ export function Content(){
   return(
     <div>
       <h1>The Content: </h1>
+      <SignUp />
+      <Login />
+      <Logout />
       <RecipesIndex recipes = {recipes} displayRecipe = {displayRecipe}/>
       <Modal show = {showRecipe} onCloseRecipe = {closeRecipe}>
         <RecipesShow recipe = {currentRecipe} updateRecipe = {updateRecipe} deleteRecipe = {deleteRecipe}/>

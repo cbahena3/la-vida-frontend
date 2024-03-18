@@ -7,6 +7,7 @@ import { RecipesShow } from "./RecipesShow";
 import { SignUp } from "./SignUp";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
+import { Routes, Route } from "react-router-dom";
 
 export function Content(){
   const [recipes, setRecipes] = useState([]);
@@ -64,14 +65,20 @@ export function Content(){
   return(
     <div>
       <h1>The Content: </h1>
-      <SignUp />
-      <Login />
-      <Logout />
-      <RecipesIndex recipes = {recipes} displayRecipe = {displayRecipe}/>
+      <Routes>
+        {/* User Routes */}
+        <Route path = "/login" element = {<Login />}/>
+        <Route path = "/signup" element = {<SignUp />}/>
+        <Route path = "/logout" element = {<Logout />}/>
+
+        {/* For The Recipes */}
+        <Route path = "/recipes" element = { <RecipesIndex recipes = {recipes} displayRecipe = {displayRecipe}/>}/>
+        <Route path = "/create-recipe" element = {<RecipesNew onCreateRecipe = {recipesCreate} />}/>
+      </Routes>
+      
       <Modal show = {showRecipe} onCloseRecipe = {closeRecipe}>
         <RecipesShow recipe = {currentRecipe} updateRecipe = {updateRecipe} deleteRecipe = {deleteRecipe}/>
       </Modal>
-      <RecipesNew onCreateRecipe = {recipesCreate} />
     </div>
   )
 }

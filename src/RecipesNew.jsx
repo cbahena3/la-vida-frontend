@@ -27,6 +27,10 @@ export function RecipesNew(props){
           <textarea name="ingredients" id="ingredients" cols="16" rows="1"></textarea>
         </div>
         <div>
+          <label htmlFor="instructions">Instructions: </label>
+          <textarea name="instructions" id="instructions" cols="16" rows="1"></textarea>
+        </div>
+        <div>
           <label htmlFor="time">Time: </label>
           <input name="time" type="text" />
         </div>

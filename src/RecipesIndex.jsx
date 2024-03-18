@@ -11,6 +11,7 @@ export function RecipesIndex(props){
           <img src={recipe.image} />
           <p>Description: {recipe.description}</p>
           <p>Ingredients:{recipe.ingredients}</p>
+          <p>Instructions:{recipe.instructions}</p>
           <p>Time:{recipe.time}</p>
           <p>Creator:{recipe.user_id}</p>
           <p>Servings:{recipe.servings}</p>

@@ -2,10 +2,10 @@ export function Home () {
   return(
     <div>
       <h1>Welcome To La Vida</h1>
-      <img src="https://t4.ftcdn.net/jpg/02/32/48/35/360_F_232483527_B9KZazS7LsGexMg0icM1gUNghIcqJDvL.jpg" alt="ingredients"/>
       <div>
         <h2>Popular Recipes </h2>
         <p>THis will be a carasouel of recipes</p>
+        <img src="https://t4.ftcdn.net/jpg/02/32/48/35/360_F_232483527_B9KZazS7LsGexMg0icM1gUNghIcqJDvL.jpg" alt="ingredients"/>
       </div>
       <div>
         <h2>Cooking at home versus eating out offers numerous advantages, including:</h2>

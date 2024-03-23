@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const jwt = localStorage.getItem("jwt");
 if(jwt){
@@ -37,6 +38,9 @@ export function Login(){
         <div>
           <label htmlFor="password">Password: </label>
           <input name="password" type="password" />
+        </div>
+        <div>
+         <p>No Account? <Link to = "/signup" className="">Sign Up</Link> Now!</p> 
         </div>
         <button type="submit">Login</button>
       </form>

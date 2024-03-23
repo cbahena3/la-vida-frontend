@@ -55,6 +55,7 @@ export function Content(){
   };
 
   const deleteRecipe = (recipe) => {
+    // eslint-disable-next-line no-unused-vars
     axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then((response) => {
       setRecipes(recipes.filter((p)=> p.id !== recipe.id));
       closeRecipe();

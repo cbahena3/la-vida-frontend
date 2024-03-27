@@ -78,7 +78,7 @@ export function Content(){
         <Route path = "/create-recipe" element = {<RecipesNew onCreateRecipe = {recipesCreate} />}/>
 
         {/* Home Page */}
-        <Route path = "/" element = {<Home />}/>
+        <Route path = "/" element = {<Home recipes = {recipes} displayRecipe = {displayRecipe}/>}/>
       </Routes>
 
       <Modal show = {showRecipe} onCloseRecipe = {closeRecipe}>

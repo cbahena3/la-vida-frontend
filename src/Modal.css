@@ -1,26 +1,36 @@
-/* .modal-background {
+/* :root {
+  --modal-background-color: rgba(0, 0, 0, 0.6);
+  --modal-width: 80%;
+  --modal-max-width: 90vw;
+  --modal-max-height: 90vh;
+}
+
+.modal-background {
   display: block;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--modal-background-color);
   z-index: 1000;
 }
 
 .modal-main {
   position: fixed;
   background: white;
-  width: 80%;
+  width: var(--modal-width);
+  max-width: var(--modal-max-width);
   height: auto;
+  max-height: var(--modal-max-height);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1em;
+  overflow: auto;
 }
 
-.modal-main button.close {
+  .modal-main button.close {
   font-size: 2em;
   background: none;
   border: none;

@@ -26,7 +26,7 @@ export function Content(){
     setCurrentRecipe(recipe);
   };
 
-  const closeRecipe = () => {
+  const onCloseRecipe = () => {
     setShowRecipe(false);
   };
 
@@ -81,9 +81,11 @@ export function Content(){
         <Route path = "/" element = {<Home recipes = {recipes} displayRecipe = {displayRecipe}/>}/>
       </Routes>
 
-      <Modal show = {showRecipe} onCloseRecipe = {closeRecipe}>
+      <Modal show = {showRecipe} onCloseRecipe = {onCloseRecipe}>
         <RecipesShow recipe = {currentRecipe} updateRecipe = {updateRecipe} deleteRecipe = {deleteRecipe}/>
       </Modal>
+
+      
     </div>
   )
 }

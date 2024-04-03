@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import "./Modal.css";
-export function Modal(props){
-  if (props.show){
-    return(
+export function Modal(props) {
+  if (props.show) {
+    return (
       <div className="modal-background">
-        <div className="modal-main">
+        <section className="modal-main">
           {props.children}
-        </div>
+          <button className="close" type="button" onClick={props.onCloseRecipe}>
+            &#x2715;
+          </button>
+        </section>
       </div>
-    )
+    );
   }
 }

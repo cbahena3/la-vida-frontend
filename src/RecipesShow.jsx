@@ -12,6 +12,7 @@ export function RecipesShow(props){
 
   return(
     <div>
+
       <div>
         <h1>{props.recipe.name}</h1>
         <img src={props.recipe.image} />

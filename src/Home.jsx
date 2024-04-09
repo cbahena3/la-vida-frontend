@@ -1,56 +1,38 @@
 /* eslint-disable react/prop-types */
+import { Carousel } from 'antd';
 export function Home (props) {
+  const contentStyle = {
+    height: '70%',
+    position: 'relative',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+    width: '70%',
+    margin: 'auto',
+  };
+  
+  const threeRecipes = props.recipes.slice(0,3);
+  const firstRecipe = threeRecipes[0];
+  const secondRecipe = threeRecipes[1];
+  const thirdRecipe = threeRecipes[2];
+
   return(
     <div>
       <h1>Welcome To La Vida</h1>
       <div>
-        <h2>Popular Recipes </h2>
-        <p>THis will be a carasouel of recipes</p>
-        {props.recipes.map((recipe)=>(
-        <div key={recipe.id}>
-          {/* <h2>{recipe.name}</h2>
-          <img src={recipe.image} /> */}
-          <div id="carouselExampleCaptions" className="carousel slide">
-            <div className="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img src={recipe.image}className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>{recipe.name}</h5>
-                  <p>Some representative placeholder content for the first slide.</p>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img src={recipe.image} className="d-block w-100"/>
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Some representative placeholder content for the second slide.</p>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img src="..." className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>Some representative placeholder content for the third slide.</p>
-                </div>
-              </div>
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
+      <Carousel autoplay fade>
+        <div>
+          <h3 style={contentStyle}> <img src={firstRecipe?.image}  style={{width: '70%'}}/></h3>
+          <h4 style={contentStyle}>{firstRecipe?.name}</h4>
         </div>
-      ))}
-        <img src="https://t4.ftcdn.net/jpg/02/32/48/35/360_F_232483527_B9KZazS7LsGexMg0icM1gUNghIcqJDvL.jpg" alt="ingredients"/>
+        <div>
+          <h3 style={contentStyle}><img src={secondRecipe?.image} style={{width: '70%'}}/></h3>
+        </div>
+        <div>
+          <h3 style={contentStyle}><img src={thirdRecipe?.image} style={{width: '70%'}}/></h3>
+        </div>
+      </Carousel>
       </div>
       <div>
         <h2>Cooking at home versus eating out offers numerous advantages, including:</h2>

@@ -85,11 +85,11 @@ export function Home (props) {
             </Col>
           </Row>
         </div>
-        <div>
+        {/* <div>
           <h3>Summary </h3>
           <iframe title="YouTube video"src="https://www.youtube.com/embed/17a7Wcgf-aU?si=RPeJK0kjvL2MF6Ml?autoplay=1" allow="autoplay; encrypted-media" allowFullScreen></iframe>
           <p>Cooking at home presents a multitude of advantages over dining out, including improved health outcomes due to greater control over ingredients and portion sizes, resulting in healthier meals. It is also more cost-effective, allowing individuals to save money by purchasing ingredients in bulk and avoiding the markup of restaurant prices. Moreover, cooking at home fosters the development of culinary skills and provides opportunities for social interaction with family and friends during meal preparation. Additionally, it reduces environmental impact through decreased waste and offers greater control over portion sizes, aiding in weight management. Lastly, cooking at home ensures food safety by adhering to proper handling and cooking practices, ultimately contributing to overall well-being and satisfaction.</p>
-        </div>
+        </div> */}
       </div>
     </div>
   )

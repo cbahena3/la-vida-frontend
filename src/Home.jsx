@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Carousel } from 'antd';
+import { Carousel, Col, Row, Card } from 'antd';
 export function Home (props) {
   const contentStyle = {
     height: '70%',
     position: 'relative',
-    color: '#fff',
+    color: 'white',
     lineHeight: '160px',
     textAlign: 'center',
     background: '#364d79',
@@ -23,37 +23,67 @@ export function Home (props) {
       <div>
       <Carousel autoplay fade>
         <div>
-          <h3 style={contentStyle}> <img src={firstRecipe?.image}  style={{width: '70%'}}/></h3>
-          <h4 style={contentStyle}>{firstRecipe?.name}</h4>
+          <p style={contentStyle}> <img src={firstRecipe?.image}  style={{width: '70%'}}/></p>
+          <h2 style={contentStyle}>{firstRecipe?.name}</h2>
+          <h5 style={contentStyle}>{firstRecipe?.description}</h5>
         </div>
         <div>
-          <h3 style={contentStyle}><img src={secondRecipe?.image} style={{width: '70%'}}/></h3>
+          <p style={contentStyle}><img src={secondRecipe?.image} style={{width: '70%'}}/></p>
+          <h2 style={contentStyle}>{secondRecipe?.name}</h2>
+          <h5 style={contentStyle}>{secondRecipe?.description}</h5>
         </div>
         <div>
-          <h3 style={contentStyle}><img src={thirdRecipe?.image} style={{width: '70%'}}/></h3>
+          <p style={contentStyle}><img src={thirdRecipe?.image} style={{width: '70%'}}/></p>
+          <h2 style={contentStyle}>{thirdRecipe?.name}</h2>
+          <h5 style={contentStyle}>{thirdRecipe?.description}</h5>
         </div>
       </Carousel>
       </div>
       <div>
         <h2>Cooking at home versus eating out offers numerous advantages, including:</h2>
         <div>
-          <ol>
-            <li> <b>Healthier Options:</b> When you cook at home, you have control over the ingredients, portion sizes, and cooking methods. This allows you to choose healthier options and control your calorie intake.</li>
-
-            <li><b>Cost-Effective:</b> Eating out regularly can be expensive, especially if you dine at restaurants or order takeout frequently. Cooking at home is generally more cost-effective since you can buy ingredients in bulk, take advantage of sales and discounts, and prepare multiple meals from one shopping trip.</li>
-
-            <li><b>Customization:</b> Cooking at home allows you to customize meals according to your preferences, dietary restrictions, and nutritional needs. You can adjust recipes to suit your taste, substitute ingredients as needed, and accommodate any allergies or food sensitivities.</li>
-
-            <li><b>Improved Cooking Skills:</b> Cooking at home provides an opportunity to hone your culinary skills and experiment with different recipes and cooking techniques. Over time, you can become more proficient in the kitchen, which can be both rewarding and enjoyable.</li>
-
-            <li><b>Quality Time with Family and Friends:</b> Cooking at home can be a social activity, allowing you to spend quality time with family and friends while preparing meals together. It offers an opportunity to bond, share stories, and create lasting memories in the comfort of your own home.</li>
-
-            <li><b>Reduced Environmental Impact:</b> Cooking at home typically generates less waste compared to eating out, where single-use containers and packaging are often used. Additionally, cooking at home allows you to make more environmentally friendly choices, such as buying locally sourced ingredients or reducing food waste by using leftovers creatively.</li>
-
-            <li><b>Greater Control Over Portions:</b> Restaurants often serve oversized portions, which can contribute to overeating and weight gain. Cooking at home allows you to control portion sizes, helping you maintain a healthy weight and avoid unnecessary calorie consumption.</li>
-
-            <li><b>Enhanced Food Safety:</b> By cooking at home, you can ensure that food is handled and prepared safely, reducing the risk of foodborne illnesses. You can follow proper food safety guidelines, such as washing hands, sanitizing surfaces, and cooking foods to the appropriate temperatures.</li>
-          </ol>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Card title="Healthier Options:" bordered={false}>
+              When you cook at home, you have control over the ingredients, portion sizes, and cooking methods. This allows you to choose healthier options and control your calorie intake.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Improves Cooking Skills:" bordered={false}>
+              Provides an opportunity to hone your culinary skills and experiment with different recipes and cooking techniques. Over time, you become more proficient, which can be both rewarding and enjoyable.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Cost-Effective:" bordered={false}>
+              Eating out regularly can be expensive, especially if you dine at restaurants frequently. Cooking at home is generally more cost-effective since you can take advantage of sales and discounts.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Customization:" bordered={false}>
+              Allows you to customize meals according to your preferences, dietary restrictions, and nutritional needs. You can adjust recipes to suit your taste, substitute ingredients, and accommodate any food sensitivities.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Quality Time:" bordered={false}>
+              Can be a social activity, allowing you to spend quality time with family and friends while preparing meals together. It offers an opportunity to bond, share stories, and create lasting memories.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Portion Control:" bordered={false}>
+              Restaurants often serve oversized portions. Cooking at home allows you to control portion sizes, helping you maintain a healthy weight and avoid unnecessary calorie consumption.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Reduced Environmental Impact:" bordered={false}>
+              Generates less waste compared to eating out, where single-use containers and packaging are often used. It also allows you to make more environmentally friendly choices, such as buying locally sourced ingredients or reducing food waste by using leftovers creatively.
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Enhanced Food Safety:" bordered={false}>
+              You can ensure that food is handled and prepared safely, reducing the risk of foodborne illnesses. You can follow proper food safety guidelines, such as washing hands, sanitizing surfaces, and cooking foods to the appropriate temperatures.
+              </Card>
+            </Col>
+          </Row>
         </div>
         <div>
           <h3>Summary </h3>

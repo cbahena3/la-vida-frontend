@@ -85,9 +85,18 @@ export function Login(){
           }}
         >
           <Checkbox>Remember me</Checkbox>
-          <p>No Account? <Link to = "/signup" className="">Sign Up</Link> Now!</p> 
+          {/* <p>No Account? <Link to = "/signup" className="">Sign Up</Link> Now!</p>  */}
         </Form.Item>
 
+        <Form.Item
+          name="signup"
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <p>No Account? <Link to = "/signup" className="">Sign Up</Link> Now!</p> 
+        </Form.Item>
         <Form.Item
           wrapperCol={{
             offset: 8,
@@ -95,7 +104,7 @@ export function Login(){
           }}
         >
           <Button type="primary" htmlType="submit" >
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>

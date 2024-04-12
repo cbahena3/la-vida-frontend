@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "antd": "^5.16.1",
+    "antd-img-crop": "^4.21.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "react": "^18.2.0",

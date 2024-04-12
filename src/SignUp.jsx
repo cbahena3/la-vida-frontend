@@ -1,46 +1,59 @@
 import axios from "axios"
 import { useState } from "react"
-import { InboxOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input,  message, Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
+import { Button, Checkbox, Form, Input, Upload} from 'antd';
 
 
-const { Dragger } = Upload;
-const props = {
-  name: 'file',
-  multiple: true,
-  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log('Dropped files', e.dataTransfer.files);
-  },
-};
 
 export function SignUp(){
   const [errors, setErrors] = useState([]);
-  const handleSubmit = (event) => {
+
+  const handleFormSubmit = (formData) => {
+    const event = { preventDefault: () => {} }; 
+    handleSubmit(event, formData);
+  };
+  const handleSubmit = (event, formData) => {
     event.preventDefault();
     setErrors([]);
-    const params = new FormData(event.target);
-    // eslint-disable-next-line no-unused-vars
-    axios.post("http://localhost:3000/users.json", params).then((response) => {
-      event.target.reset();
-      window.location.href = "/";
-    }).catch((error) => {
-      console.log(error.response.data.errors);
-      setErrors(error.response.data.errors);
-    })
+    
+    const params = new FormData(); 
+   
+    for (const key in formData) {
+      params.append(key, formData[key]);
+    }
+    
+    axios.post("http://localhost:3000/users.json", params)
+      .then((response) => {
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+        setErrors(error.response.data.errors);
+      });
+  };
+  
+
+  const [fileList, setFileList] = useState([
+  ]);
+
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   };
 
+  const onPreview = async (file) => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
+  };
 
   return(
     <div>
@@ -49,36 +62,7 @@ export function SignUp(){
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
-      </ul>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="firstName">First Name: </label>
-          <input name="firstName" type="text" />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name: </label>
-          <input name="lastName" type="text" />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input name="email" type="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <label htmlFor="password_confirmation">Password Confirmation: </label>
-          <input name="password_confirmation" type="password" />
-        </div>
-        <div>
-          <label htmlFor="image">Profile Photo: </label>
-          <input name="image" type="file" />
-        </div>
-        <button type="submit"> Sign Up </button>
-      </form>
-
-
+    </ul>
       <Form
         name="basic"
         labelCol={{
@@ -93,7 +77,7 @@ export function SignUp(){
         initialValues={{
           remember: true,
         }}
-        onFinish={handleSubmit}
+        onFinish={handleFormSubmit}
         autoComplete="off"
         
       >
@@ -163,25 +147,24 @@ export function SignUp(){
         <Form.Item
           label="Profile Photo"
           name="image"
-          // rules={[
-          //   {
-          //     required: true,
-          //     message: 'Please confirm your password!',
-          //   },
-          // ]}
+          rules={[
+            {
+              required: false,
+            },
+          ]}
         >
-          <Dragger {...props}>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            <p className="ant-upload-hint">
-              Support for a single or bulk upload. Strictly prohibited from uploading company data or other
-              banned files.
-            </p>
-          </Dragger>
+          <ImgCrop rotationSlider>
+            <Upload
+              action="http://localhost:3000/users.json"
+              listType="picture-card"
+              fileList={fileList}
+              onChange={onChange}
+              onPreview={onPreview}
+            >
+              {fileList.length === 0 && '+ Upload'}
+            </Upload>
+          </ImgCrop>
         </Form.Item>
-
         <Form.Item
           name="remember"
           valuePropName="checked"

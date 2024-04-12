@@ -31,21 +31,6 @@ export function Login(){
           <li key={error}>{error}</li>
         ))}
       </ul>
-      {/* <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input name="email" type="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-         <p>No Account? <Link to = "/signup" className="">Sign Up</Link> Now!</p> 
-        </div>
-        <button type="submit">Login</button>
-      </form> */}
-
       <Form
         name="basic"
         labelCol={{

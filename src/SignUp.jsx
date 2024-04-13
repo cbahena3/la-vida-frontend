@@ -62,7 +62,7 @@ export function SignUp(){
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
-    </ul>
+      </ul>
       <Form
         name="basic"
         labelCol={{

@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --modal-background-color: rgba(0, 0, 0, 0.6);
   --modal-width: 80%;
   --modal-max-width: 90vw;
@@ -30,11 +30,11 @@
   overflow: auto;
 }
 
-  .modal-main button.close {
+.modal-main button.close {
   font-size: 2em;
   background: none;
   border: none;
   position: absolute;
   top: 0em;
   right: 0.2em;
-} */
+}

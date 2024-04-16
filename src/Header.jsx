@@ -41,7 +41,7 @@ export function Header(){
                 <ul className="dropdown-menu">
                   {jwt === true ? (
                     <div>
-                      <li><Link to = "/" className="dropdown-item">Account Settings (Coming Soon)</Link></li>
+                      <li><Link to = "/account-information" className="dropdown-item">Account Settings (Coming Soon)</Link></li>
                       <li><hr className="dropdown-divider"/></li>
                       <li><button onClick={handleClick} className="dropdown-item">Logout</button></li>
                     </div>  

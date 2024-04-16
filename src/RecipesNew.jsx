@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import { Login } from "./Login";
 import ImgCrop from 'antd-img-crop';
-import { Button, Checkbox, Form, Input, InputNumber, Upload} from 'antd';
+import { Button, Form, Input, InputNumber, Upload} from 'antd';
 
 
 /* eslint-disable react/prop-types */
 export function RecipesNew(props){
   const [errors, setErrors] = useState([]);
+  const [formData, setFormData] = useState({});
 
   const handleFormSubmit = (formData) => {
     const event = { preventDefault: () => {} }; 
@@ -17,13 +18,13 @@ export function RecipesNew(props){
   const handleSubmit = (event, formData) => {
     event.preventDefault();
     setErrors([]);
-    
-    const params = new FormData(); 
-   
+  
+    const params = new FormData();
+  
     for (const key in formData) {
       params.append(key, formData[key]);
     }
-    
+  
     axios.post("http://localhost:3000/recipes.json", params)
       .then((response) => {
         window.location.href = "/recipes";
@@ -32,7 +33,8 @@ export function RecipesNew(props){
         console.log(error.response.data.errors);
         setErrors(error.response.data.errors);
       });
-  };
+    };
+  
 
   const [jwt, setJwt] = useState(localStorage.getItem("jwt") !== null ? true : false);
   useEffect(() => {
@@ -44,7 +46,11 @@ export function RecipesNew(props){
 
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
+    const formDataCopy = { ...formData };
+    formDataCopy.image = newFileList.length > 0 ? newFileList[0].originFileObj : null;
+    setFormData(formDataCopy);
   };
+  
 
   const onPreview = async (file) => {
     let src = file.url;
@@ -111,7 +117,7 @@ export function RecipesNew(props){
                 },
               ]}
             >
-              <Input />
+              <Input.TextArea />
             </Form.Item>
 
             <Form.Item
@@ -124,7 +130,7 @@ export function RecipesNew(props){
                 },
               ]}
             >
-              <Input />
+              <Input.TextArea />
             </Form.Item>
 
             <Form.Item
@@ -137,7 +143,7 @@ export function RecipesNew(props){
                 },
               ]}
             >
-              <Input />
+              <Input.TextArea />
             </Form.Item>
 
             <Form.Item
@@ -187,7 +193,7 @@ export function RecipesNew(props){
             >
               <ImgCrop rotationSlider>
                 <Upload
-                  action="http://localhost:3000/users.json"
+                  action="http://localhost:3000/recipes.json"
                   listType="picture-card"
                   fileList={fileList}
                   onChange={onChange}
@@ -209,7 +215,7 @@ export function RecipesNew(props){
             </Form.Item>
           </Form>
           
-
+          
         </div>
       ) : (
         <div>

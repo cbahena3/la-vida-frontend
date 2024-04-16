@@ -7,6 +7,7 @@ import { RecipesShow } from "./RecipesShow";
 import { SignUp } from "./SignUp";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
+import { UsersShow } from "./UsersShow";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./Home";
 
@@ -14,6 +15,8 @@ export function Content(){
   const [recipes, setRecipes] = useState([]);
   const [showRecipe, setShowRecipe] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState({});
+  const [showUser, setShowUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const recipesIndex = () =>{
     axios.get("http://localhost:3000/recipes.json").then((response) =>{
@@ -35,6 +38,12 @@ export function Content(){
       setRecipes([...recipes, response.data]);
       successCallback();
     })
+  };
+
+  const displayUser = (user) => {
+    console.log("displayUser", user);
+    setShowUser(true);
+    setCurrentUser(user);
   };
 
   const updateRecipe = (id, params, successCallback)=>{
@@ -72,6 +81,9 @@ export function Content(){
         <Route path = "/login" element = {<Login />}/>
         <Route path = "/signup" element = {<SignUp />}/>
         <Route path = "/logout" element = {<Logout />}/>
+
+        {/* User Account */}
+        <Route path = "/account-information" element = {<UsersShow user = {currentUser} />}/>
 
         {/* For The Recipes */}
         <Route path = "/recipes" element = { <RecipesIndex recipes = {recipes} displayRecipe = {displayRecipe}/>}/>

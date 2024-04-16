@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 const jwt = localStorage.getItem("jwt");
@@ -60,7 +61,7 @@ export function Login(){
             },
           ]}
         >
-          <Input />
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
         </Form.Item>
 
         <Form.Item
@@ -72,8 +73,9 @@ export function Login(){
               message: 'Please input your password!',
             },
           ]}
+          hasFeedback
         >
-          <Input.Password />
+          <Input.Password placeholder="Password"/>
         </Form.Item>
 
         <Form.Item

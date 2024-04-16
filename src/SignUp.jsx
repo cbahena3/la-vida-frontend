@@ -90,8 +90,9 @@ export function SignUp(){
               message: 'Please input your first name!',
             },
           ]}
+          hasFeedback
         >
-          <Input />
+          <Input placeholder="John"/>
         </Form.Item>
         <Form.Item
           label="Last Name"
@@ -102,8 +103,9 @@ export function SignUp(){
               message: 'Please input your last name!',
             },
           ]}
+          hasFeedback
         >
-          <Input />
+          <Input placeholder="Doe"/>
         </Form.Item>
 
         <Form.Item
@@ -115,8 +117,9 @@ export function SignUp(){
               message: 'Please input your email!',
             },
           ]}
+          hasFeedback
         >
-          <Input />
+          <Input placeholder="User@test.com"/>
         </Form.Item>
 
         <Form.Item
@@ -128,8 +131,9 @@ export function SignUp(){
               message: 'Please input your password!',
             },
           ]}
+          hasFeedback
         >
-          <Input.Password />
+          <Input.Password placeholder="Password"/>
         </Form.Item>
 
         <Form.Item
@@ -141,8 +145,9 @@ export function SignUp(){
               message: 'Please confirm your password!',
             },
           ]}
+          hasFeedback
         >
-          <Input.Password />
+          <Input.Password placeholder="Password"/>
         </Form.Item>
         <Form.Item
           label="Profile Photo"
